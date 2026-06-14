@@ -19,6 +19,7 @@ bin/
 
 ### IntelliJ IDEA ###
 .idea
+.TECH_DEBT.md
 *.iws
 *.iml
 *.ipr

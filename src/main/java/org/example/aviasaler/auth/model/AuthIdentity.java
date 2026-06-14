@@ -34,8 +34,8 @@ public class AuthIdentity extends Auditable {
         this.passwordHash = passwordHash;
     }
 
-    public static AuthIdentity local(User user, AuthProvider provider, String providerUserId, String passwordHash) {
-        return new AuthIdentity(user, provider, providerUserId, passwordHash);
+    public static AuthIdentity local(User user, String passwordHash) {
+        return new AuthIdentity(user, AuthProvider.LOCAL, user.getEmail(), passwordHash);
     }
 
     public static AuthIdentity oauth(User user, AuthProvider provider, String providerUserId) {

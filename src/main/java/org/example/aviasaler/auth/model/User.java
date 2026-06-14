@@ -35,7 +35,11 @@ public class User extends Auditable {
         this.enabled = true;
     }
 
-    protected User() {}
+    protected User() {
+    }
 
+    public void addRole(Role role) {
+        roles.add(role);
+    }
 
 }
