@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: aviasaler-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: aviasaler
+      POSTGRES_USER: aviasaler
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-aviasaler}
+    ports:
+      - "5435:5432"   # хост:контейнер — наружу 5435, внутри Postgres слушает 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aviasaler -d aviasaler"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
